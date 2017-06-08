@@ -4,7 +4,7 @@ Feature: Adjust Profile Cards
 	So that I can see different information regarding the profile cards in the main page
 	
 	Scenario: First time accessing the website
- 		Given it is the first time accessing the website
+ 		Given Is the first time accessing the website
  		When I reach the main page
  		Then all profile cards are shown with default configuration
 		
@@ -19,14 +19,15 @@ Feature: Adjust Profile Cards
 		And I press the button save
 		Then the configuration of the profiles cards is saved
 		And I am redirected to the main page
-		And the webpage displays the profile cards with the <configinformation>
+		And the webpage displays the profile cards with the <config_information>
 
 		#update: add another placeholder (<configinformation>) in the step and include it in the examples table beloow
 	Examples:
-	|detail| configinformation |
+	|detail| config_information |
 	|email| team-member-1@ipleiria.pt |
 	|email| team-member-2@ipleiria.pt |
 	|email| team-member-3@ipleiria.pt |
+	|email| team-member-4@ipleiria.pt |
 	|current ocupation|
 	|working experience|
 	|education|

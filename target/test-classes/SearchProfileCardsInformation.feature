@@ -18,6 +18,7 @@ Feature: Search Profile Cards Information
 		
 	Examples:
 		|number_of_members|
+		|one|
 		|two|
 		|three|
 		|four|

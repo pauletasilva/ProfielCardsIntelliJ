@@ -43,25 +43,25 @@ Feature: Show Profile Card Details
 		
 	Scenario: Member has details
 		Given Member has details
-		When I select the profile card of member <number_of_member>
-		Then I see all details of the member <number_of_member>
+		When I select the profile card of member <member_name>
+		Then I see all details of the member <member_name>
 		
-	Examples:
-		|number_of_members|
-		|one|
-		|two|
-		|three|
-		|four|
-		
-	Scenario: Member has no details
-		Given Member has no details
-		When I select the profile card of <member_name>
-		Then I'm redirected to that profile card
-		And I get feedback saying that the member <member_name> has no details
-
 	Examples:
 		|member_name|
 		|Carlos|
 		|João|
 		|Nivi|
 		|Tiago|
+		
+	Scenario: Member has no details
+		Given Member has no details
+		When I select the profile card of <member_name>
+		Then I'm redirected to that profile card
+		And I get feedback saying <feedback_msg>
+
+	Examples:
+		|member_name|feedback_msg|
+		|Carlos|Carlos has no details|
+		|João|João has no details|
+		|Nivi|Nivi has no details|
+		|Tiago|Tiago has no details|

@@ -4,7 +4,9 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
@@ -12,133 +14,126 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Created by João on 07/06/2017.
- */
+import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+
 public class ShowAllProfileCardsStepDefs {
 
     private static WebDriver driver;
-    private static String baseUrl;
 
-//    static {
-//        Logger.getLogger("").setLevel(Level.OFF);
-//        System.setProperty("webdriver.gecko.driver", "drivers\\geckodriver.exe");
-//        System.setProperty("webdriver.edge.driver", "drivers\\MicrosoftWebDriver.exe");
-//        System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
-//        System.setProperty("phantomjs.binary.path", "drivers\\phantomjs.exe"); //
-//        if (driver == null) {
-//            driver = new HtmlUnitDriver();
-//            baseUrl = "";
-//        }
-//    }
-
-//    @Given("^I navigate to the main page$")
-//    public void iNavigateToTheMainPage() throws Throwable {
-//        driver.get(URL);
-//    }
-
-    //method that makes the site url a parameter
-    @Before
-    public void setUp() throws Exception {
+    static {
         Logger.getLogger("").setLevel(Level.OFF);
-        driver = new HtmlUnitDriver();
-        //baseUrl = String.valueOf(System.getProperty("baseUrl"));
-        if(baseUrl==null)
-            baseUrl = "TO BE FILLED";
+        System.setProperty("webdriver.gecko.driver", "drivers\\geckodriver.exe");
+        System.setProperty("webdriver.edge.driver", "drivers\\MicrosoftWebDriver.exe");
+        System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
+        System.setProperty("phantomjs.binary.path", "drivers\\phantomjs.exe");
+        if(driver == null) {
+            driver = new ChromeDriver();
+        }
 
-        System.out.println("Base URL is: " + baseUrl);
     }
 
-//    @Before
-//    public void setUp() throws Exception {
-//        driver = new FirefoxDriver();
-//        baseUrl = "TO BE FILLED";
-//        //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-//    }
-
-    @Given("^is the first time accessing the website$")
-    public void isTheFirstTimeAccessingTheWebsite() throws Throwable {
-        // VERIFY IF IT IS THE FIRST TIME ACESSING THE PAGE
-    }
-
-    @And("^the profile cards have a default configuration on what information is shown$")
-    public void theProfileCardsHaveADefaultConfigurationOnWhatInformationIsShown() throws Throwable {
-        // CHECK IF THE 4 BIG DETAILS ARE SELECTED
+    @Given("^I want to access the main page$")
+    public void iWantToAccessTheMainPage() throws Throwable {
+        driver.get("http://profilecards-myproject.192.168.99.100.nip.io/website/index.html");
     }
 
     @When("^main page is reached$")
     public void mainPageIsReached() throws Throwable {
-        // CHECK IF IT WAS REDIRECTED TO THE MAIN PAGE
+        //driver.get("http://profilecards-myproject.192.168.99.100.nip.io/website/index.html");
+        assertEquals("Profile Cards", driver.getTitle());
     }
 
-    @Then("^I see all profile cards according to the default configuration$")
-    public void iSeeAllProfileCardsAccordingToTheDefaultConfiguration() throws Throwable {
-        // CHECK IF THE 4 BIG DETAILS ARE BEING SHOWN
+    @Then("^I see all profile cards in their default configuration$")
+    public void iSeeAllProfileCardsInTheirDefaultConfiguration() throws Throwable {
+        // /html/body/div/div[1]/div[1]/img
+        String srcFileCarlos = driver.findElement(By.xpath("//div[1]/div[1]/img")).getAttribute("src");
+        System.out.println("IMG" + srcFileCarlos);
+        assertEquals("imgs/foto4_200x200.png", srcFileCarlos);
+
+
+        // /html/body/div/div[1]/div[1]/p
+        assertEquals("Student", driver.findElement(By.xpath("//div[1]/div[1]/p")).getText());
+
+        assertEquals("Carlos Ferreira", driver.findElement(By.linkText("Carlos Ferreira")).getText());
+
+
+
+        String srcFileJoao = driver.findElement(By.xpath("//div[1]/div[2]/img")).getAttribute("src");
+        assertEquals("'@src='imgs/foto2_200x200.png'", srcFileJoao);
+
+        // /html/body/div/div[1]/div[2]/p
+        assertEquals("Student", driver.findElement(By.xpath("//div[1]/div[2]/p")).getText());
+
+        assertEquals("João Silva", driver.findElement(By.linkText("João Silva")).getText());
+
+
+
+        String srcFileTiago = driver.findElement(By.xpath("//div[2]/div[1]/img")).getAttribute("src");
+        assertEquals("'@src='imgs/foto4_200x200.png'", srcFileTiago);
+
+        // /html/body/div/div[2]/div[1]/p
+        assertEquals("Student", driver.findElement(By.xpath("//div[2]/div[1]/p")).getText());
+
+        assertEquals("Tiago Monteiro", driver.findElement(By.linkText("Tiago Monteiro")).getText());
+
+
+
+        String srcFileNivi = driver.findElement(By.xpath("//div[2]/div[2]/img")).getAttribute("src");
+        assertEquals("'@src='imgs/niv.jpg'", srcFileNivi);
+
+        // /html/body/div/div[2]/div[2]/p
+        assertEquals("Student", driver.findElement(By.xpath("//div[2]/div[2]/p")).getText());
+
+        assertEquals("Nivedhita Gowthaman", driver.findElement(By.linkText("Nivedhita Gowthaman")).getText());
+
+//        assertEquals("", driver.findElement(By.xpath("//a[contains(@href, 'https://www.facebook.com')]")).getText());
+//        assertEquals("", driver.findElement(By.xpath("//a[contains(@href, 'https://twitter.com')]")).getText());
+//        assertEquals("", driver.findElement(By.xpath("//a[contains(@href, 'https://www.linkedin.com')]")).getText());
     }
 
-
-    @Given("^Member has information in all existing fields$")
-    public void memberHasInformationInAllExistingFields() throws Throwable {
-        // CHECK IF THERE IS INFO IN THE 4 BIG DETAILS
+    @Given("^\"([^\"]*)\" has information in all existing fields$")
+    public void hasInformationInAllExistingFields(String memberName) throws Throwable {
+        driver.get("http://profilecards-myproject.192.168.99.100.nip.io/website/index.html");
     }
 
-    @Then("^I see all profile cards with information about the respective member$")
-    public void iSeeAllProfileCardsWithInformationAboutTheRespectiveMember() throws Throwable {
-        // CHECK IF THE 4 BIG DETAILS ARE BEING SHOWN
+    @Then("^I see all profile cards with information about \"([^\"]*)\"$")
+    public void iSeeAllProfileCardsWithInformationAbout(String memberName) throws Throwable {
+        if (memberName.startsWith("Carlos")) {
+            String srcFileCarlos = driver.findElement(By.xpath("//div[1]/div[1]/img")).getAttribute("src");
+            System.out.println("IMG" + srcFileCarlos);
+            assertEquals("imgs/foto4_200x200.png", srcFileCarlos);
+
+
+            // /html/body/div/div[1]/div[1]/p
+            assertEquals("Student", driver.findElement(By.xpath("//div[1]/div[1]/p")).getText());
+
+            assertEquals("Carlos Ferreira", driver.findElement(By.linkText("Carlos Ferreira")).getText());
+        } else if (memberName.startsWith("João")) {
+            String srcFileJoao = driver.findElement(By.xpath("//div[1]/div[2]/img")).getAttribute("src");
+            assertEquals("'@src='imgs/foto2_200x200.png'", srcFileJoao);
+
+            // /html/body/div/div[1]/div[2]/p
+            assertEquals("Student", driver.findElement(By.xpath("//div[1]/div[2]/p")).getText());
+
+            assertEquals("João Silva", driver.findElement(By.linkText("João Silva")).getText());
+        } else if (memberName.startsWith("Nivedhita")) {
+            String srcFileTiago = driver.findElement(By.xpath("//div[2]/div[1]/img")).getAttribute("src");
+            assertEquals("'@src='imgs/foto4_200x200.png'", srcFileTiago);
+
+            // /html/body/div/div[2]/div[1]/p
+            assertEquals("Student", driver.findElement(By.xpath("//div[2]/div[1]/p")).getText());
+
+            assertEquals("Tiago Monteiro", driver.findElement(By.linkText("Tiago Monteiro")).getText());
+        } else if (memberName.startsWith("Tiago")) {
+            String srcFileNivi = driver.findElement(By.xpath("//div[2]/div[2]/img")).getAttribute("src");
+            assertEquals("'@src='imgs/niv.jpg'", srcFileNivi);
+
+            // /html/body/div/div[2]/div[2]/p
+            assertEquals("Student", driver.findElement(By.xpath("//div[2]/div[2]/p")).getText());
+
+            assertEquals("Nivedhita Gowthaman", driver.findElement(By.linkText("Nivedhita Gowthaman")).getText());
+        }
     }
-
-
-    @Given("^a member doesn't have information for one or more fields$")
-    public void aMemberDoesnTHaveInformationForOneOrMoreFields() throws Throwable {
-        // CHECK IF A DETAIL IS EQUAL TO ""
-    }
-
-    @Then("^every field without information of that profile card will display a message saying that the information was not found$")
-    public void everyFieldWithoutInformationOfThatProfileCardWillDisplayAMessageSayingThatTheInformationWasNotFound() throws Throwable {
-        // CHECK IF FEEBBACK IS BEING GIVEN
-    }
-
-
-    @Given("^all members are confirmed$")
-    public void allMembersAreConfirmed() throws Throwable {
-        // CONFIRM == TRUE ?!
-    }
-
-    @When("^I check profile cards$")
-    public void iCheckProfileCards() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @Then("^I see all profile cards according to their predefined configuration$")
-    public void iSeeAllProfileCardsAccordingToTheirPredefinedConfiguration() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @Given("^the member <memberName> is not able to attend due to <reason>$")
-    public void theMemberMemberNameIsNotAbleToAttendDueToReason() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @And("^other members are able to attend to the conference$")
-    public void otherMembersAreAbleToAttendToTheConference() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @When("^I check the main page$")
-    public void iCheckTheMainPage() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @Then("^I get feedback saying that <memberName> is unable to attend due to <reason>$")
-    public void iGetFeedbackSayingThatMemberNameIsUnableToAttendDueToReason() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-
 }
