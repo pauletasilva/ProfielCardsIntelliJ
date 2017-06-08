@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0ea032e-599e-403b-8306-203d20246448" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/CucumbRunner.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/ShowAllProfileCardsStepDefs.java" afterPath="$PROJECT_DIR$/src/test/java/ShowAllProfileCardsStepDefs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/ShowAllProfileCards.feature" afterPath="$PROJECT_DIR$/src/test/resources/ShowAllProfileCards.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/AdjustProfileCards.feature" afterPath="$PROJECT_DIR$/target/test-classes/AdjustProfileCards.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/SearchProfileCardsInformation.feature" afterPath="$PROJECT_DIR$/target/test-classes/SearchProfileCardsInformation.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/ShowAllProfileCards.feature" afterPath="$PROJECT_DIR$/target/test-classes/ShowAllProfileCards.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/ShowProfileCardDetails.feature" afterPath="$PROJECT_DIR$/target/test-classes/ShowProfileCardDetails.feature" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,8 +30,8 @@
       <file leaf-file-name="ShowAllProfileCardsStepDefs.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/ShowAllProfileCardsStepDefs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="774">
-              <caret line="135" column="114" lean-forward="false" selection-start-line="135" selection-start-column="114" selection-end-line="135" selection-end-column="114" />
+            <state relative-caret-position="228">
+              <caret line="52" column="36" lean-forward="false" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -638,7 +632,7 @@
       <workItem from="1496947904864" duration="358000" />
       <workItem from="1496948273435" duration="7000" />
       <workItem from="1496948700209" duration="593000" />
-      <workItem from="1496952015236" duration="11035000" />
+      <workItem from="1496952015236" duration="11859000" />
     </task>
     <task id="LOCAL-00001" summary="setUp() added to ShowAllProfileCardsStepDefs">
       <created>1496940818283</created>
@@ -647,7 +641,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496940818284</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ShowAllProfileCardsStepDefs changes">
+      <created>1496964444972</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1496964444972</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -683,7 +684,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21187000" />
+    <option name="totallyTimeSpent" value="22011000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="69" y="-9" width="1860" height="1098" extended-state="6" />
@@ -722,7 +723,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="setUp() added to ShowAllProfileCardsStepDefs" />
-    <option name="LAST_COMMIT_MESSAGE" value="setUp() added to ShowAllProfileCardsStepDefs" />
+    <MESSAGE value="ShowAllProfileCardsStepDefs changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="ShowAllProfileCardsStepDefs changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1078,8 +1080,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/ShowAllProfileCardsStepDefs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="135" column="114" lean-forward="false" selection-start-line="135" selection-start-column="114" selection-end-line="135" selection-end-column="114" />
+        <state relative-caret-position="228">
+          <caret line="52" column="36" lean-forward="false" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="36" />
           <folding />
         </state>
       </provider>

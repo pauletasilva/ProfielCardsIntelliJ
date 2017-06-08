@@ -50,7 +50,7 @@ public class ShowAllProfileCardsStepDefs {
         // /html/body/div/div[1]/div[1]/img
         String srcFileCarlos = driver.findElement(By.xpath("//div[1]/div[1]/img")).getAttribute("src");
         System.out.println("IMG" + srcFileCarlos);
-        assertEquals("imgs/foto4_200x200.png", srcFileCarlos);
+        assertEquals("imgs/carlos200.png", srcFileCarlos);
 
 
         // /html/body/div/div[1]/div[1]/p
