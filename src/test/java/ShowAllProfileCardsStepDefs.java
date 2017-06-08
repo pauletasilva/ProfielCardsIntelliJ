@@ -37,12 +37,24 @@ public class ShowAllProfileCardsStepDefs {
 //        driver.get(URL);
 //    }
 
+    //method that makes the site url a parameter
     @Before
     public void setUp() throws Exception {
-        driver = new FirefoxDriver();
-        baseUrl = "TO BE FILLED";
-        //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        Logger.getLogger("").setLevel(Level.OFF);
+        driver = new HtmlUnitDriver();
+        //baseUrl = String.valueOf(System.getProperty("baseUrl"));
+        if(baseUrl==null)
+            baseUrl = "TO BE FILLED";
+
+        System.out.println("Base URL is: " + baseUrl);
     }
+
+//    @Before
+//    public void setUp() throws Exception {
+//        driver = new FirefoxDriver();
+//        baseUrl = "TO BE FILLED";
+//        //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+//    }
 
     @Given("^is the first time accessing the website$")
     public void isTheFirstTimeAccessingTheWebsite() throws Throwable {
